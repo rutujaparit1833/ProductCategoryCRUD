@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Category</title>
+</head>
+<body>
+
+    <h1>Create</h1>
+
+    <h4>Category</h4>
+    <hr />
+
+    <!-- Success message (if any) -->
+    <div id="success-message" style="display:none; background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 10px; border-radius: 5px;">
+        <strong>Success message here</strong>
+    </div>
+
+    @if(ViewBag.success!=null){
+        <h3>@ViewBag.success</h3>
+    }
+    <div class="row">
+        <div class="col-md-4">
+            <form action="/Category/Create" method="post">
+                <!-- Validation summary (if any) -->
+                <div id="validation-summary" style="color: red;"></div>
+
+                <div class="form-group">
+                    <label for="CName">Category Name</label>
+                    <input name="CName" type="text" class="form-control" id="CName" />
+                    <span id="CName-error" style="color: red;"></span> <!-- Validation error for CName -->
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a href="/Category/Index">Back to List</a>
+    </div>
+
+
+</body>
+</html>

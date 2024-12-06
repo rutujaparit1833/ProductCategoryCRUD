@@ -1,0 +1,31 @@
+﻿@model ProductCategoryCRUD.Models.Product
+
+<body>
+    <h2>Create Product</h2>
+    <form action="/Product/Create" method="post">
+        <div>
+            <label for="name">Product Name:</label>
+            <input type="text" id="name" name="Name" placeholder="Enter product name" required>
+        </div>
+        <br />
+        <div>
+            <label for="category">Category:</label>
+            <select id="category" name="cId" required>
+                <option value="">-- Select Category --</option>
+                @foreach (var category in ViewBag.Categories)
+                {
+                  
+                        <option value="@category.Id" selected>@category.CName</option>
+                    
+                    
+                }
+            </select>
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+
+    <a href="/Product/index">Go to List</a>
+</body>

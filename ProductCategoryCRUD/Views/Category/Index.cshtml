@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ProductCategoryCRUD.Models.Category>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Index</title>
+    <!-- Optionally, you can link a Bootstrap CSS file here for styling -->
+</head>
+<body>
+
+    <h1>Index</h1>
+
+    <p>
+        <a href="@Url.Action("Create", "Category")" >Create New Category</a>
+    </p>
+    <p>
+        <a href="@Url.Action("Create", "Product")">Create New Product</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Category ID</th>
+                <th>Category Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model!=null){
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td> <!-- Category ID from the model -->
+                        <td>@item.CName</td> <!-- Category Name from the model -->
+                        <td>
+                            <a href="@Url.Action("UpdateCategory", "Category", new { id = item.Id })" >Edit</a> |
+                            <a href="@Url.Action("GetCategoryById", "Category", new { id = item.Id })" >Details</a> |
+                            <a href="@Url.Action("DeleteById", "Category", new { id = item.Id })" >Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>
