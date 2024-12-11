@@ -1,0 +1,45 @@
+﻿@model ProductCategoryCRUD.Models.Category
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Category By Id</title>
+</head>
+<body>
+
+    <h1>Get Category By Id</h1>
+
+    <div>
+        <h4>Category</h4>
+        <hr />
+        <form method="post" action="/Category/UpdateCategory">
+            <div class="row">
+                <!-- Category ID (readonly) -->
+                <div class="form-group col-sm-6">
+                    <label for="Id">Category ID</label>
+                    <input id="Id" name="Id" type="text" class="form-control" value="@Model.Id" readonly />
+                </div>
+
+                <!-- Category Name -->
+                <div class="form-group col-sm-6">
+                    <label for="CName">Category Name</label>
+                    <input id="CName" name="CName" type="text" class="form-control" value="@Model.CName" />
+                </div>
+            </div>
+
+            <!-- Submit Button to Save Changes -->
+            <div>
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <!-- Back to list link -->
+        <a href="/Category/Index">Back to List</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ProductCategoryCRUD.Models.ProductcatgoryViewModel>
+
+<h2>Product List</h2>
+
+<a href="/Product/Create">Create Product</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>CID</th>
+            <th>CName</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model!=null){
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.pid</td>
+                    <td>@item.Pname</td>
+                    <td>@item.cid</td>
+                    <td>@item.cname</td>
+                    <td>
+                        <a href="/Product/UpdateProduct/?id=@item.pid">Edit</a> |
+                        <a href="/Product/GetProductById?id=@item.pid">Details</a> |
+                        <a href="/Product/DeleteById/@item.cid">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<!-- Pagination Controls -->
+<div>
+    @if (ViewBag.PageNumber > 1)
+    {
+        <a href="@Url.Action("Index", new { pageNumber = ViewBag.PageNumber - 1, pageSize = ViewBag.PageSize })">Previous</a>
+    }
+
+    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+    {
+        <a href="@Url.Action("Index", new { pageNumber = i, pageSize = ViewBag.PageSize })"
+           class="@(i == ViewBag.PageNumber ? "active" : "")">
+            @i
+        </a>
+    }
+
+    @if (ViewBag.PageNumber < ViewBag.TotalPages)
+    {
+        <a href="@Url.Action("Index", new { pageNumber = ViewBag.PageNumber + 1, pageSize = ViewBag.PageSize })">Next</a>
+    }
+</div>
